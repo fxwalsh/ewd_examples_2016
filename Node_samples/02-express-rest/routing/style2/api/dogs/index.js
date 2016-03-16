@@ -9,4 +9,8 @@ module.exports = function(app){
  app.get('/dogs', function(req, res){
 	res.json(200,dogs);
 });
+
+ app.post('/dogs', function(req, res){
+	res.json(200,dogs);
+});
 }

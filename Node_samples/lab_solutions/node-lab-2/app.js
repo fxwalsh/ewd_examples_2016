@@ -1,20 +1,15 @@
-'use strict';
-
 var express = require('express');
 var bodyParser = require('body-parser');
 //create an express app
 var app = express();
 
-//create routing object
-var dogs =require('./api/dogs/index');
-
-//configure the app to pase JSON in input
+//configure the express app to parse JSON-formatted body
 app.use(bodyParser.json());
 
-//Add routes for dogs api
-app.get('/dogs',dogs.listAllDogs);
+// Configure the app to serve up content from public directory
+app.use(express.static('public'));
 
-app.post('/dogs',dogs.addDog);
+require('./api/customers/index')(app);
 
 // Listen on port 8000, IP defaults to 127.0.0.1
 app.listen(8000)
